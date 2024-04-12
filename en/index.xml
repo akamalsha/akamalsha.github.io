@@ -2,40 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Adil Kamalsha&#39;s Blog</title>
-    <link>http://localhost:1313/en/</link>
+    <link>https://akamalsha.github.io/en/</link>
     <description>Recent content on Adil Kamalsha&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://akamalsha.github.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://localhost:1313/en/search/</link>
+      <link>https://akamalsha.github.io/en/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/search/</guid>
+      <guid>https://akamalsha.github.io/en/search/</guid>
       <description></description>
     </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/en/about/</link>
+      <link>https://akamalsha.github.io/en/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/about/</guid>
+      <guid>https://akamalsha.github.io/en/about/</guid>
       <description>Welcome to my corner of the digital universe! I&amp;rsquo;m Adil Kamalsha, a Senior IT Engineer with expertise in Network Architecture, Security Operations, Cloud Management, and Linux Administration &amp;amp; Automation.
 I specialize in crafting robust network infrastructures, fortifying cyber defenses, optimizing cloud environments, and streamlining Linux systems through automation. You can contact me through any social media sites you like. I have included links to the accounts I use most often.</description>
     </item>
     <item>
       <title>Building a Website for Free: My Journey with Hugo and GitHub</title>
-      <link>http://localhost:1313/en/blog/journey/</link>
+      <link>https://akamalsha.github.io/en/blog/journey/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/blog/journey/</guid>
+      <guid>https://akamalsha.github.io/en/blog/journey/</guid>
       <description>Nowadays, having your own website is very useful. It helps you create an online identity, display your work, or share your ideas with people around the world. However, making a website can seem difficult, especially if you don&amp;rsquo;t have much money. Don&amp;rsquo;t worry! In this guide, I&amp;rsquo;ll show you how to build a professional website for free using GitHub and Hugo.
-What is GitHub and Hugo?
-GitHub is a popular platform for hosting and sharing code repositories.</description>
+What is GitHub and Hugo? GitHub is a popular platform for hosting and sharing code repositories.</description>
     </item>
     <item>
       <title>Projects</title>
-      <link>http://localhost:1313/en/projects/</link>
+      <link>https://akamalsha.github.io/en/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/projects/</guid>
+      <guid>https://akamalsha.github.io/en/projects/</guid>
       <description>Add your projects content here.</description>
     </item>
   </channel>
