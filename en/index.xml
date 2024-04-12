@@ -6,15 +6,7 @@
     <description>Recent content on Adil Kamalsha&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akamalsha.github.io/en/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Building a Stunning Website for Free: My Journey with Hugo and GitHub</title>
-      <link>https://akamalsha.github.io/en/blog/journey/</link>
-      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://akamalsha.github.io/en/blog/journey/</guid>
-      <description>Content Coming Soon!</description>
-    </item>
     <item>
       <title></title>
       <link>https://akamalsha.github.io/en/search/</link>
@@ -29,6 +21,15 @@
       <guid>https://akamalsha.github.io/en/about/</guid>
       <description>Welcome to my corner of the digital universe! I&amp;rsquo;m Adil Kamalsha, a Senior IT Engineer with expertise in Network Architecture, Security Operations, Cloud Management, and Linux Administration &amp;amp; Automation.
 I specialize in crafting robust network infrastructures, fortifying cyber defenses, optimizing cloud environments, and streamlining Linux systems through automation. You can contact me through any social media sites you like. I have included links to the accounts I use most often.</description>
+    </item>
+    <item>
+      <title>Building a Website for Free: My Journey with Hugo and GitHub</title>
+      <link>https://akamalsha.github.io/en/blog/journey/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/journey/</guid>
+      <description>Nowadays, having your own website is very useful. It helps you create an online identity, display your work, or share your ideas with people around the world. However, making a website can seem difficult, especially if you don&amp;rsquo;t have much money. Don&amp;rsquo;t worry! In this guide, I&amp;rsquo;ll show you how to build a professional website for free using GitHub and Hugo.
+What is GitHub and Hugo?
+GitHub is a popular platform for hosting and sharing code repositories.</description>
     </item>
     <item>
       <title>Projects</title>

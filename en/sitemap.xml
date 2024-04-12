@@ -2,18 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://akamalsha.github.io/en/</loc>
-    <lastmod>2024-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://akamalsha.github.io/en/blog/</loc>
-    <lastmod>2024-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://akamalsha.github.io/en/blog/journey/</loc>
-    <lastmod>2024-03-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://akamalsha.github.io/en/search/</loc>
   </url><url>
     <loc>https://akamalsha.github.io/en/about/</loc>
+  </url><url>
+    <loc>https://akamalsha.github.io/en/</loc>
+  </url><url>
+    <loc>https://akamalsha.github.io/en/blog/</loc>
+  </url><url>
+    <loc>https://akamalsha.github.io/en/blog/journey/</loc>
   </url><url>
     <loc>https://akamalsha.github.io/en/categories/</loc>
   </url><url>
