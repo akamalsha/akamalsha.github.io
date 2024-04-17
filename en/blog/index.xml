@@ -16,11 +16,11 @@
 What is GitHub and Hugo? GitHub is a popular platform for hosting and sharing code repositories.</description>
     </item>
     <item>
-      <title>How can you let PAN Global Protect access public AWS instances when using split tunneling??</title>
+      <title>Ensuring Security: How to Verify Threat IDs 95187, 95189, and 95191 are Reset in Palo Alto Using Postman</title>
       <link>https://akamalsha.github.io/en/blog/pan_aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://akamalsha.github.io/en/blog/pan_aws/</guid>
-      <description>Content coming soon..</description>
+      <description>Recently, CVE-2024-3400 has emerged as a significant vulnerability affecting Palo Alto devices, raising concerns about the integrity of network security. In response, it&amp;rsquo;s crucial to not only address the vulnerability but also ensure the effective reset of associated threat IDs. In this blog post, we&amp;rsquo;ll delve into how to verify the reset of Threat IDs 95187, 95189, and 95191 in Palo Alto devices using Postman, bolstering your network&amp;rsquo;s defenses against potential exploits.</description>
     </item>
     <item>
       <title>Zero Day CVE-2024-3400 - How to verify if the Threat ID 95187 is applied?</title>
