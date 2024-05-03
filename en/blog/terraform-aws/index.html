@@ -175,13 +175,13 @@ Feel free to customize the configuration according to your specific requirements
 <span class="meta-item">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> 
     &nbsp;
-    <span id="87b77761b830e67548ed0f31932e0c9d" title="Views">
+    <span id="87b77761b830e67548ed0f31932e0c9d" title="">
     </span>
 </span>
 <script>
     var r = new XMLHttpRequest();
     r.addEventListener('load', function() {
-        document.getElementById('87b77761b830e67548ed0f31932e0c9d').innerText = JSON.parse(this.responseText).count_unique + ' ' + "Views"
+        document.getElementById('87b77761b830e67548ed0f31932e0c9d').innerText = JSON.parse(this.responseText).count_unique + ' ' + ""
     })
     r.open('GET', "https://akamalsha.goatcounter.com/counter/" + encodeURIComponent("/en/blog/terraform-aws/".replace(/(\/)?$/, '')) + '.json')
     r.send()
@@ -629,7 +629,13 @@ variable &#34;availability_zone&#34; {
   </footer>
 </article>
     </main>
-    
+      
+<script id="partials/analytics.html" 
+  data-goatcounter="https://akamalsha.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+
+
+
 <footer class="footer">
     <span>&copy; 2024 <a href="https://akamalsha.github.io/en/">Adil Kamalsha&#39;s Blog</a></span>
     <span>

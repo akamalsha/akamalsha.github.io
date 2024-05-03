@@ -169,13 +169,13 @@ You may securely manage all of your outgoing internet communication from a singl
 <span class="meta-item">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> 
     &nbsp;
-    <span id="a60f07296e9c0993bac13aff28052217" title="Views">
+    <span id="a60f07296e9c0993bac13aff28052217" title="">
     </span>
 </span>
 <script>
     var r = new XMLHttpRequest();
     r.addEventListener('load', function() {
-        document.getElementById('a60f07296e9c0993bac13aff28052217').innerText = JSON.parse(this.responseText).count_unique + ' ' + "Views"
+        document.getElementById('a60f07296e9c0993bac13aff28052217').innerText = JSON.parse(this.responseText).count_unique + ' ' + ""
     })
     r.open('GET', "https://akamalsha.goatcounter.com/counter/" + encodeURIComponent("/en/blog/egreesaws/".replace(/(\/)?$/, '')) + '.json')
     r.send()
@@ -341,7 +341,13 @@ Type :wq to save and exit.
   </footer>
 </article>
     </main>
-    
+      
+<script id="partials/analytics.html" 
+  data-goatcounter="https://akamalsha.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+
+
+
 <footer class="footer">
     <span>&copy; 2024 <a href="https://akamalsha.github.io/en/">Adil Kamalsha&#39;s Blog</a></span>
     <span>
