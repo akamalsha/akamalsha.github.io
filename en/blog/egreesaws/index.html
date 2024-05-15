@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Optimising AWS Network Architecture: Utilising Centralized NAT Gateway using Transit Gateway Design | Adil Kamalsha&#39;s Blog</title>
-<meta name="keywords" content="">
+<meta name="keywords" content="Networking, Cloud">
 <meta name="description" content="Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.
 You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.">
 <meta name="author" content="Adil">
@@ -70,7 +70,7 @@ You may securely manage all of your outgoing internet communication from a singl
   "name": "Optimising AWS Network Architecture: Utilising Centralized NAT Gateway using Transit Gateway Design",
   "description": "Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.\nYou may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.",
   "keywords": [
-    
+    "Networking", "Cloud"
   ],
   "articleBody": "Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.\nYou may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.\nFor every VPC that requires outbound internet connectivity, you must combine an internet gateway with NAT gateways or NAT instances if you don’t have an Amazon Transit Gateway. However, maintaining numerous internet gateways, NAT gateways, and instances increases labour and expenses if you have a larger number of VPCs. In that scenario, using AWS Transit Gateway to centralise outbound traffic can help you minimise overhead.\nIn this post we will create a centralised exit point for prod ec2 instances using the Transit Gateway solution.\nWhat is a Transit Gateway solution? Transit Gateway provides a hub and spoke design for connecting VPCs and on-premises networks as a fully managed service without requiring you to provision third-party virtual appliances. No VPN overlay is required, and AWS manages high availability and scalability. More details about transit gateways in this article https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html\nKey requirements to build a centralised Hub VPC NAT Gateways - This is essential to provide internet access to Spoke VPC EC2 instances. This should be created in the Hub VPC to centralise the connection. Internet Gateway - This is important to allow users access the Hub VPC via a bastion host also the NAT Gateway depends on this. Transit Gateway - This is the main gateway in the central network to route the traffic between Hub and Spoke Solution Overview Deploying the above example I have created a terraform code to deploy this setup from scratch in my previous post For more information, you can refer to my previous post:\nBuilding an AWS Centralized NAT Gateway Solution from Scratch with Terraform After you download the code and make changes to it based on your specific needs, start by running the Terraform commands.\nterraform validate /To validate the config terraform plan /To see what resources will be configured terraform apply /To apply the config into your AWS environment Testing the deployment Login to the bastion host in the Hub VPC using SSH. Then connect to the spoke VPC instances.\nssh -i (path to key) ec2-user@(Public IP of the Bastion Host)\nCopy the SSH key for this Region to the bastion host\nvi sshkey.pem Press i for putting vi in insert mode. Copy the private key you downloaded earlier and paste it into vi. Press Esc Type :wq to save and exit. Use ssh to connect to the Spoke 1 Instance from bastion\nssh -i ./sshkey.pem ec2-user@(Private IP of Spoke 1 Instance)\nTest the internet connectivity using curl from the spoke 1 instance:\ncurl http:www.amazon.com\n",
   "wordCount" : "482",
@@ -256,6 +256,8 @@ Type :wq to save and exit.
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://akamalsha.github.io/en/tags/networking/">Networking</a></li>
+      <li><a href="https://akamalsha.github.io/en/tags/cloud/">Cloud</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://akamalsha.github.io/en/blog/pan_cve2024/">
@@ -274,7 +276,7 @@ Type :wq to save and exit.
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Optimising AWS Network Architecture: Utilising Centralized NAT Gateway using Transit Gateway Design on x"
-            href="https://x.com/intent/tweet/?text=Optimising%20AWS%20Network%20Architecture%3a%20Utilising%20Centralized%20NAT%20Gateway%20using%20Transit%20Gateway%20Design&amp;url=https%3a%2f%2fakamalsha.github.io%2fen%2fblog%2fegreesaws%2f&amp;hashtags=">
+            href="https://x.com/intent/tweet/?text=Optimising%20AWS%20Network%20Architecture%3a%20Utilising%20Centralized%20NAT%20Gateway%20using%20Transit%20Gateway%20Design&amp;url=https%3a%2f%2fakamalsha.github.io%2fen%2fblog%2fegreesaws%2f&amp;hashtags=Networking%2cCloud">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

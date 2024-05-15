@@ -1,0 +1,68 @@
+
+---
+title: "Optimising AWS Network Architecture: Utilising Centralized NAT Gateway using Transit Gateway Design"
+date: YYYY-MM-DD
+showToc: true
+tocOpen: true
+tags: [Networking, Cloud]
+---
+
+ Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world. 
+
+You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.
+
+For every VPC that requires outbound internet connectivity, you must combine an internet gateway with NAT gateways or NAT instances if you don't have an Amazon Transit Gateway. However, maintaining numerous internet gateways, NAT gateways, and instances increases labour and expenses if you have a larger number of VPCs. In that scenario, using AWS Transit Gateway to centralise outbound traffic can help you minimise overhead.
+
+In this post we will create a centralised exit point for prod ec2 instances using the Transit Gateway solution.
+
+# What is a Transit Gateway solution?
+Transit Gateway provides a hub and spoke design for connecting VPCs and on-premises networks as a fully managed service without requiring you to provision third-party virtual appliances. No VPN overlay is required, and AWS manages high availability and scalability. More details about transit gateways in this article https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html
+
+# Key requirements to build a centralised Hub VPC
+1. NAT Gateways - This is essential to provide internet access to Spoke VPC EC2 instances. This should be created in the Hub VPC to centralise the connection.
+2. Internet Gateway - This is important to allow users access the Hub VPC via a bastion host also the NAT Gateway depends on this.
+3. Transit Gateway - This is the main gateway in the central network to route the traffic between Hub and Spoke
+
+# Solution Overview
+![image alt text](/egressvpc.png)
+
+
+# Deploying the above example
+
+I have created a terraform code to deploy this setup from scratch in my previous post {{< ref_post url="/en/blog/terraform-aws/" title="Building an AWS Centralized NAT Gateway Solution from Scratch with Terraform" >}}
+
+After you download the code and make changes to it based on your specific needs, start by running the Terraform commands.
+
+1. ``` terraform validate ``` /To validate the config
+2. ``` terraform plan ``` /To see what resources will be configured
+3. ``` terraform apply ``` /To apply the config into your AWS environment
+
+![image alt text](/validate.png)
+![image alt text](/apply.png)
+
+
+# Testing the deployment 
+Login to the bastion host in the Hub VPC using SSH. Then connect to the spoke VPC instances. 
+
+``` ssh -i (path to key) ec2-user@(Public IP of the Bastion Host) ```
+
+Copy the SSH key for this Region to the bastion host
+
+```
+vi sshkey.pem
+Press i for putting vi in insert mode.
+Copy the private key you downloaded earlier and paste it into vi.
+Press Esc
+Type :wq to save and exit.
+
+```
+Use ssh to connect to the Spoke 1 Instance from bastion
+
+``` ssh -i ./sshkey.pem ec2-user@(Private IP of Spoke 1  Instance) ```
+
+Test the internet connectivity using curl from the spoke 1 instance:
+
+``` curl http:www.amazon.com ```
+
+
+
