@@ -42,6 +42,15 @@ How can IP conflicts be avoided? Keeping an eye on the distribution of IP addres
       <description>Recently, CVE-2024-3400 has emerged as a significant vulnerability affecting Palo Alto devices, raising concerns about the integrity of network security. In response, it&amp;rsquo;s crucial to not only address the vulnerability but also ensure the effective reset of associated threat IDs. In this blog post, we&amp;rsquo;ll delve into how to verify the reset of Threat IDs 95187, 95189, and 95191 in Palo Alto devices using Postman, bolstering your network&amp;rsquo;s defenses against potential exploits.</description>
     </item>
     <item>
+      <title>Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard</title>
+      <link>https://akamalsha.github.io/en/blog/rad-sec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/rad-sec/</guid>
+      <description>Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.
+Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.
+For today&amp;rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability.</description>
+    </item>
+    <item>
       <title>Optimising AWS Network Architecture: Utilising Centralized NAT Gateway using Transit Gateway Design</title>
       <link>https://akamalsha.github.io/en/blog/egreesaws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
