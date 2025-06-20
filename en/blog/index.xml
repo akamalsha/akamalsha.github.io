@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blogs on Adil Kamalsha&#39;s Blog</title>
+    <link>https://akamalsha.github.io/en/blog/</link>
+    <description>Recent content in Blogs on Adil Kamalsha&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://akamalsha.github.io/en/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Egress Only Internet Gateway</title>
+      <link>https://akamalsha.github.io/en/blog/egreesaws/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/egreesaws/</guid>
+      <description>&lt;p&gt;Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.&lt;/p&gt;
+&lt;p&gt;You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building a Website for Free: My Journey with Hugo and GitHub</title>
+      <link>https://akamalsha.github.io/en/blog/journey/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/journey/</guid>
+      <description>&lt;p&gt;Nowadays, having your own website is very useful. It helps you create an online identity, display your work, or share your ideas with people around the world. However, making a website can seem difficult, especially if you don&amp;rsquo;t have much money. Don&amp;rsquo;t worry! In this guide, I&amp;rsquo;ll show you how to build a professional website for free using GitHub and Hugo.&lt;/p&gt;
+&lt;p&gt;What is GitHub and Hugo?
+GitHub is a popular platform for hosting and sharing code repositories. It&amp;rsquo;s widely used by developers for version control and collaboration on projects. Hugo, on the other hand, is a fast and flexible static site generator written in Go. It allows you to create websites with lightning-fast load times and easy maintenance.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard</title>
+      <link>https://akamalsha.github.io/en/blog/rad-sec/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/rad-sec/</guid>
+      <description>&lt;p&gt;Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.&lt;/p&gt;
+&lt;p&gt;Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.&lt;/p&gt;
+&lt;p&gt;For today&amp;rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Meraki 9300 Switch Configuration</title>
+      <link>https://akamalsha.github.io/en/blog/meraki9300/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/meraki9300/</guid>
+      <description>&lt;p&gt;To add a Cisco Catalyst 9300 switch to the Meraki dashboard, follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Obtain the Cloud ID of your Cisco Catalyst 9300 switch. This is typically available on the device&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to Organization Inventory:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Go to the Organization tab in the left-hand menu.&lt;/p&gt;
+&lt;p&gt;Click on Inventory.&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Claim the Device:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Click on the Claim button.&lt;/p&gt;
+&lt;p&gt;Enter the Cloud ID of your Catalyst 9300 switch. The Cloud ID can usually be found on a label on the switch or in the switch&amp;rsquo;s local management interface.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Palo Alto Networks CVE 2024</title>
+      <link>https://akamalsha.github.io/en/blog/pan_cve2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/pan_cve2024/</guid>
+      <description>&lt;p&gt;Recently, CVE-2024-3400 has emerged as a significant vulnerability affecting Palo Alto devices, raising concerns about the integrity of network security. In response, it&amp;rsquo;s crucial to not only address the vulnerability but also ensure the effective reset of associated threat IDs. In this blog post, we&amp;rsquo;ll delve into how to verify the reset of Threat IDs 95187, 95189, and 95191 in Palo Alto devices using Postman, bolstering your network&amp;rsquo;s defenses against potential exploits.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Terraform AWS Infrastructure</title>
+      <link>https://akamalsha.github.io/en/blog/terraform-aws/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/terraform-aws/</guid>
+      <description>&lt;p&gt;In this post I will be sharing the terraform code to build a Centralized NAT Gateway using Transit Gateway (Route table design)&lt;/p&gt;
+&lt;p&gt;I use Visual Studio Code to build my terraform code.&lt;/p&gt;
+&lt;p&gt;The directory structure looks like this
+&lt;img loading=&#34;lazy&#34; src=&#34;https://akamalsha.github.io/vscode.png&#34; alt=&#34;image alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;This code is also uploaded in my github repo &lt;a href=&#34;https://github.com/akamalsha/terraform-aws-code&#34;&gt;https://github.com/akamalsha/terraform-aws-code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Feel free to customize the configuration according to your specific requirements and explore additional features and functionalities offered by Terraform and AWS to further optimize your network infrastructure.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Windows Server Configuration</title>
+      <link>https://akamalsha.github.io/en/blog/windows/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/windows/</guid>
+      <description>&lt;p&gt;Ensuring that all services are up and operating without any disruptions is crucial in a data centre setting.&lt;/p&gt;
+&lt;p&gt;If you are utilising a DHCP server, it is crucial to ensure that you do not have duplicate IP addresses or IP conflicts, especially in server environments, as this will disrupt your vital services.&lt;/p&gt;
+&lt;h1 id=&#34;how-can-ip-conflicts-be-avoided&#34;&gt;How can IP conflicts be avoided?&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Keeping an eye on the distribution of IP addresses&lt;/li&gt;
+&lt;li&gt;Preserving an IPAM system in real time&lt;/li&gt;
+&lt;li&gt;Setting up static IP addresses on important servers that are not covered by DHCP or using DHCP IP reservations.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It can take days to find and fix duplicate IP addresses, which makes problem solving difficult at times.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Zero-Day CVE-2024-3400</title>
+      <link>https://akamalsha.github.io/en/blog/zero-day.cve-2024-3400/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/zero-day.cve-2024-3400/</guid>
+      <description>&lt;p&gt;What is Zero Day CVE-2024-3400?&lt;/p&gt;
+&lt;p&gt;A command injection vulnerability in the GlobalProtect feature of Palo Alto Networks PAN-OS software for specific PAN-OS versions and distinct feature configurations may enable an unauthenticated attacker to execute arbitrary code with root privileges on the firewall.
+Fixes for PAN-OS 10.2, PAN-OS 11.0, and PAN-OS 11.1 are in development and are expected to be released by April 14, 2024. Cloud NGFW, Panorama appliances, and Prisma Access are not impacted by this vulnerability. All other versions of PAN-OS are also not impacted.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

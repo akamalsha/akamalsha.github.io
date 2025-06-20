@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard | Adil Kamalsha&#39;s Blog</title>
+<meta name="keywords" content="Networking, Security">
+<meta name="description" content="Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.
+Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.
+For today&rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management.">
+<meta name="author" content="Adil">
+<link rel="canonical" href="https://akamalsha.github.io/en/blog/rad-sec/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c5de734fbd88c3d21543485ffbcb1ccdda89a86a780cf987fa00199c41dbc947.css" integrity="sha256-xd5zT72Iw9IVQ0hf&#43;8sczdqJqGp4DPmH&#43;gAZnEHbyUc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://akamalsha.github.io/k-48.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akamalsha.github.io/k-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akamalsha.github.io/k-48.png">
+<link rel="apple-touch-icon" href="https://akamalsha.github.io/k-48.png">
+<link rel="mask-icon" href="https://akamalsha.github.io/k-48.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://akamalsha.github.io/en/blog/rad-sec/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard" />
+<meta property="og:description" content="Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.
+Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.
+For today&rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://akamalsha.github.io/en/blog/rad-sec/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" /><meta property="og:site_name" content="Adil" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard"/>
+<meta name="twitter:description" content="Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.
+Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.
+For today&rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://akamalsha.github.io/en/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard",
+      "item": "https://akamalsha.github.io/en/blog/rad-sec/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard",
+  "name": "Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard",
+  "description": "Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.\nUsing TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.\nFor today\u0026rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management.\n",
+  "keywords": [
+    "Networking", "Security"
+  ],
+  "articleBody": "Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.\nUsing TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.\nFor today’s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management.\nHow to configure RadSec in Meraki Dashboard?\nMeraki Dashboard configuration if you are using Microsoft CA Login to your organisation from the dashboard navigate to Orgnisation \u003e Configure \u003e Certificates \u003e Upload Certificates Your internal CA Root Certificate has to be uploaded here. Open the certificate services using the URL https://URL_TO_YOUR_CA/CertSrv if you are using Microsoft CA.\nClick on download CA Root Certificate Now upload this to your Meraki Dashboard Creating Meraki Org CA certificate and Uploading it to your Radius Server Generate Meraki CA server certificate After generating you have to trust the Meraki CA certificate and download it to upload to your local Radius server Now login to your Microsoft Radius Server and import the Meraki Root CA certificate. More details on how to manually import Root certifcates on a server can be found here https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/install-imported-certificates\nWhen the import process is finished, the Meraki Root certificate should appear in the Radius server’s trusted root certificates. Now enable radsec for your Radius server configuration You can even run a quick dashboard test to validate that the authentication is working. ",
+  "wordCount" : "282",
+  "inLanguage": "en",
+  "datePublished": "2024-01-01T00:00:00Z",
+  "dateModified": "2024-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Adil"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akamalsha.github.io/en/blog/rad-sec/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adil Kamalsha's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akamalsha.github.io/k-48.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akamalsha.github.io/en/" accesskey="h" title="Home (Alt + H)">Home</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://akamalsha.github.io/en/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/resume.pdf" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/blog" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://akamalsha.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://akamalsha.github.io/en/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Increasing Wireless Network Security with Radius and RadSec in Meraki Dashboard
+    </h1>
+    <div class="post-meta"><span title='2024-01-01 00:00:00 +0000 UTC'>2024-01-01</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Adil
+      
+<span class="meta-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> 
+    &nbsp;
+    <span id="b8807154f0379083e01e655330b5bd0c" title="">
+    </span>
+</span>
+<script>
+    var r = new XMLHttpRequest();
+    r.addEventListener('load', function() {
+        document.getElementById('b8807154f0379083e01e655330b5bd0c').innerText = JSON.parse(this.responseText).count_unique + ' ' + ""
+    })
+    r.open('GET', "https://akamalsha.goatcounter.com/counter/" + encodeURIComponent("/en/blog/rad-sec/".replace(/(\/)?$/, '')) + '.json')
+    r.send()
+</script>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#meraki-dashboard-configuration-if-you-are-using-microsoft-ca" aria-label="Meraki Dashboard configuration if you are using Microsoft CA">Meraki Dashboard configuration if you are using Microsoft CA</a></li>
+                <li>
+                    <a href="#creating-meraki-org-ca-certificate-and-uploading-it-to-your-radius-server" aria-label="Creating Meraki Org CA certificate and Uploading it to your Radius Server">Creating Meraki Org CA certificate and Uploading it to your Radius Server</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Centralised Authentication, Authorization, and Accounting (AAA) in networks is facilitated by the RADIUS (Remote Authentication Dial-In User Service) protocol, which is extensively utilised for VPNs and Wi-Fi. But there is no security when using UDP with standard RADIUS.</p>
+<p>Using TCP and creating secure TLS (Transport Layer Security) connections, RadSec (RADIUS Security) improves RADIUS. User credentials are shielded from interception and manipulation by this encrypted and secure transmission method.</p>
+<p>For today&rsquo;s sophisticated networks, RadSec is perfect since it not only increases security but also dependability and scalability. Through the combination of strong security and dependable data transfer, RadSec adoption enhances network access management.</p>
+<p>How to configure RadSec in Meraki Dashboard?</p>
+<h1 id="meraki-dashboard-configuration-if-you-are-using-microsoft-ca">Meraki Dashboard configuration if you are using Microsoft CA<a hidden class="anchor" aria-hidden="true" href="#meraki-dashboard-configuration-if-you-are-using-microsoft-ca">#</a></h1>
+<ol>
+<li>
+<p>Login to your organisation from the dashboard navigate to Orgnisation &gt; Configure &gt; Certificates &gt; Upload Certificates
+<img loading="lazy" src="/cert.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>Your internal CA Root Certificate has to be uploaded here. Open the certificate services using the URL https://URL_TO_YOUR_CA/CertSrv if you are using Microsoft CA.</p>
+</li>
+<li>
+<p>Click on download CA Root Certificate
+<img loading="lazy" src="/ca.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>Now upload this to your Meraki Dashboard
+<img loading="lazy" src="/upload.png" alt="image alt text"  />
+</p>
+</li>
+</ol>
+<h1 id="creating-meraki-org-ca-certificate-and-uploading-it-to-your-radius-server">Creating Meraki Org CA certificate and Uploading it to your Radius Server<a hidden class="anchor" aria-hidden="true" href="#creating-meraki-org-ca-certificate-and-uploading-it-to-your-radius-server">#</a></h1>
+<ol>
+<li>
+<p>Generate Meraki CA server certificate
+<img loading="lazy" src="/meraki-ca.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>After generating you have to trust the Meraki CA certificate and download it to upload to your local Radius server
+<img loading="lazy" src="/trust.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>Now login to your Microsoft Radius Server and import the Meraki Root CA certificate. More details on how to manually import Root certifcates on a server can be found here <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/install-imported-certificates">https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/install-imported-certificates</a></p>
+</li>
+<li>
+<p>When the import process is finished, the Meraki Root certificate should appear in the Radius server&rsquo;s trusted root certificates.
+<img loading="lazy" src="/radroot.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>Now enable radsec for your Radius server configuration
+<img loading="lazy" src="/ssid.png" alt="image alt text"  />
+</p>
+</li>
+<li>
+<p>You can even run a quick dashboard test to validate that the authentication is working.
+<img loading="lazy" src="/test.png" alt="image alt text"  />
+</p>
+</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://akamalsha.github.io/en/tags/networking/">Networking</a></li>
+      <li><a href="https://akamalsha.github.io/en/tags/security/">Security</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://akamalsha.github.io/en/blog/journey/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Building a Website for Free: My Journey with Hugo and GitHub</span>
+  </a>
+  <a class="next" href="https://akamalsha.github.io/en/blog/meraki9300/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Meraki 9300 Switch Configuration</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+      
+<script id="partials/analytics.html" 
+  data-goatcounter="https://akamalsha.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+
+
+
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://akamalsha.github.io/en/">Adil Kamalsha&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Automation on Adil Kamalsha&#39;s Blog</title>
+    <link>https://akamalsha.github.io/en/tags/automation/</link>
+    <description>Recent content in Automation on Adil Kamalsha&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://akamalsha.github.io/en/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform AWS Infrastructure</title>
+      <link>https://akamalsha.github.io/en/blog/terraform-aws/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/terraform-aws/</guid>
+      <description>&lt;p&gt;In this post I will be sharing the terraform code to build a Centralized NAT Gateway using Transit Gateway (Route table design)&lt;/p&gt;
+&lt;p&gt;I use Visual Studio Code to build my terraform code.&lt;/p&gt;
+&lt;p&gt;The directory structure looks like this
+&lt;img loading=&#34;lazy&#34; src=&#34;https://akamalsha.github.io/vscode.png&#34; alt=&#34;image alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;This code is also uploaded in my github repo &lt;a href=&#34;https://github.com/akamalsha/terraform-aws-code&#34;&gt;https://github.com/akamalsha/terraform-aws-code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Feel free to customize the configuration according to your specific requirements and explore additional features and functionalities offered by Terraform and AWS to further optimize your network infrastructure.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

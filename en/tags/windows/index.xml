@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Windows on Adil Kamalsha&#39;s Blog</title>
+    <link>https://akamalsha.github.io/en/tags/windows/</link>
+    <description>Recent content in Windows on Adil Kamalsha&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://akamalsha.github.io/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Server Configuration</title>
+      <link>https://akamalsha.github.io/en/blog/windows/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://akamalsha.github.io/en/blog/windows/</guid>
+      <description>&lt;p&gt;Ensuring that all services are up and operating without any disruptions is crucial in a data centre setting.&lt;/p&gt;
+&lt;p&gt;If you are utilising a DHCP server, it is crucial to ensure that you do not have duplicate IP addresses or IP conflicts, especially in server environments, as this will disrupt your vital services.&lt;/p&gt;
+&lt;h1 id=&#34;how-can-ip-conflicts-be-avoided&#34;&gt;How can IP conflicts be avoided?&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Keeping an eye on the distribution of IP addresses&lt;/li&gt;
+&lt;li&gt;Preserving an IPAM system in real time&lt;/li&gt;
+&lt;li&gt;Setting up static IP addresses on important servers that are not covered by DHCP or using DHCP IP reservations.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It can take days to find and fix duplicate IP addresses, which makes problem solving difficult at times.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AWS Egress Only Internet Gateway | Adil Kamalsha&#39;s Blog</title>
+<meta name="keywords" content="Networking, Cloud">
+<meta name="description" content="Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.
+You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.">
+<meta name="author" content="Adil">
+<link rel="canonical" href="https://akamalsha.github.io/en/blog/egreesaws/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c5de734fbd88c3d21543485ffbcb1ccdda89a86a780cf987fa00199c41dbc947.css" integrity="sha256-xd5zT72Iw9IVQ0hf&#43;8sczdqJqGp4DPmH&#43;gAZnEHbyUc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://akamalsha.github.io/k-48.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akamalsha.github.io/k-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akamalsha.github.io/k-48.png">
+<link rel="apple-touch-icon" href="https://akamalsha.github.io/k-48.png">
+<link rel="mask-icon" href="https://akamalsha.github.io/k-48.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://akamalsha.github.io/en/blog/egreesaws/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="AWS Egress Only Internet Gateway" />
+<meta property="og:description" content="Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.
+You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://akamalsha.github.io/en/blog/egreesaws/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" /><meta property="og:site_name" content="Adil" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS Egress Only Internet Gateway"/>
+<meta name="twitter:description" content="Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.
+You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://akamalsha.github.io/en/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AWS Egress Only Internet Gateway",
+      "item": "https://akamalsha.github.io/en/blog/egreesaws/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AWS Egress Only Internet Gateway",
+  "name": "AWS Egress Only Internet Gateway",
+  "description": "Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.\nYou may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.\n",
+  "keywords": [
+    "Networking", "Cloud"
+  ],
+  "articleBody": "Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.\nYou may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.\nFor every VPC that requires outbound internet connectivity, you must combine an internet gateway with NAT gateways or NAT instances if you don’t have an Amazon Transit Gateway. However, maintaining numerous internet gateways, NAT gateways, and instances increases labour and expenses if you have a larger number of VPCs. In that scenario, using AWS Transit Gateway to centralise outbound traffic can help you minimise overhead.\nIn this post we will create a centralised exit point for prod ec2 instances using the Transit Gateway solution.\nWhat is a Transit Gateway solution? Transit Gateway provides a hub and spoke design for connecting VPCs and on-premises networks as a fully managed service without requiring you to provision third-party virtual appliances. No VPN overlay is required, and AWS manages high availability and scalability. More details about transit gateways in this article https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html\nKey requirements to build a centralised Hub VPC NAT Gateways - This is essential to provide internet access to Spoke VPC EC2 instances. This should be created in the Hub VPC to centralise the connection. Internet Gateway - This is important to allow users access the Hub VPC via a bastion host also the NAT Gateway depends on this. Transit Gateway - This is the main gateway in the central network to route the traffic between Hub and Spoke Solution Overview Deploying the above example I have created a terraform code to deploy this setup from scratch in my previous post For more information, you can refer to my previous post:\nBuilding an AWS Centralized NAT Gateway Solution from Scratch with Terraform After you download the code and make changes to it based on your specific needs, start by running the Terraform commands.\nterraform validate /To validate the config terraform plan /To see what resources will be configured terraform apply /To apply the config into your AWS environment Testing the deployment Login to the bastion host in the Hub VPC using SSH. Then connect to the spoke VPC instances.\nssh -i (path to key) ec2-user@(Public IP of the Bastion Host)\nCopy the SSH key for this Region to the bastion host\nvi sshkey.pem Press i for putting vi in insert mode. Copy the private key you downloaded earlier and paste it into vi. Press Esc Type :wq to save and exit. Use ssh to connect to the Spoke 1 Instance from bastion\nssh -i ./sshkey.pem ec2-user@(Private IP of Spoke 1 Instance)\nTest the internet connectivity using curl from the spoke 1 instance:\ncurl http:www.amazon.com\n",
+  "wordCount" : "482",
+  "inLanguage": "en",
+  "datePublished": "2024-01-01T00:00:00Z",
+  "dateModified": "2024-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Adil"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akamalsha.github.io/en/blog/egreesaws/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adil Kamalsha's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akamalsha.github.io/k-48.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akamalsha.github.io/en/" accesskey="h" title="Home (Alt + H)">Home</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://akamalsha.github.io/en/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/resume.pdf" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/blog" title="Blogs">
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akamalsha.github.io/en/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://akamalsha.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://akamalsha.github.io/en/blog/">Blogs</a></div>
+    <h1 class="post-title entry-hint-parent">
+      AWS Egress Only Internet Gateway
+    </h1>
+    <div class="post-meta"><span title='2024-01-01 00:00:00 +0000 UTC'>2024-01-01</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Adil
+      
+<span class="meta-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> 
+    &nbsp;
+    <span id="a60f07296e9c0993bac13aff28052217" title="">
+    </span>
+</span>
+<script>
+    var r = new XMLHttpRequest();
+    r.addEventListener('load', function() {
+        document.getElementById('a60f07296e9c0993bac13aff28052217').innerText = JSON.parse(this.responseText).count_unique + ' ' + ""
+    })
+    r.open('GET', "https://akamalsha.goatcounter.com/counter/" + encodeURIComponent("/en/blog/egreesaws/".replace(/(\/)?$/, '')) + '.json')
+    r.send()
+</script>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#what-is-a-transit-gateway-solution" aria-label="What is a Transit Gateway solution?">What is a Transit Gateway solution?</a></li>
+                <li>
+                    <a href="#key-requirements-to-build-a-centralised-hub-vpc" aria-label="Key requirements to build a centralised Hub VPC">Key requirements to build a centralised Hub VPC</a></li>
+                <li>
+                    <a href="#solution-overview" aria-label="Solution Overview">Solution Overview</a></li>
+                <li>
+                    <a href="#deploying-the-above-example" aria-label="Deploying the above example">Deploying the above example</a></li>
+                <li>
+                    <a href="#testing-the-deployment" aria-label="Testing the deployment">Testing the deployment</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Many of the apps you deploy in your environment will simply need outbound internet access to download libraries, patches, and OS upgrades, among other things. The best way to accomplish this is to use a network address translation (NAT) gateway, to protect your production ec2 instances from exposing to the outside world.</p>
+<p>You may securely manage all of your outgoing internet communication from a single location with this hub-and-spoke setup.</p>
+<p>For every VPC that requires outbound internet connectivity, you must combine an internet gateway with NAT gateways or NAT instances if you don&rsquo;t have an Amazon Transit Gateway. However, maintaining numerous internet gateways, NAT gateways, and instances increases labour and expenses if you have a larger number of VPCs. In that scenario, using AWS Transit Gateway to centralise outbound traffic can help you minimise overhead.</p>
+<p>In this post we will create a centralised exit point for prod ec2 instances using the Transit Gateway solution.</p>
+<h1 id="what-is-a-transit-gateway-solution">What is a Transit Gateway solution?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-transit-gateway-solution">#</a></h1>
+<p>Transit Gateway provides a hub and spoke design for connecting VPCs and on-premises networks as a fully managed service without requiring you to provision third-party virtual appliances. No VPN overlay is required, and AWS manages high availability and scalability. More details about transit gateways in this article <a href="https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html">https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html</a></p>
+<h1 id="key-requirements-to-build-a-centralised-hub-vpc">Key requirements to build a centralised Hub VPC<a hidden class="anchor" aria-hidden="true" href="#key-requirements-to-build-a-centralised-hub-vpc">#</a></h1>
+<ol>
+<li>NAT Gateways - This is essential to provide internet access to Spoke VPC EC2 instances. This should be created in the Hub VPC to centralise the connection.</li>
+<li>Internet Gateway - This is important to allow users access the Hub VPC via a bastion host also the NAT Gateway depends on this.</li>
+<li>Transit Gateway - This is the main gateway in the central network to route the traffic between Hub and Spoke</li>
+</ol>
+<h1 id="solution-overview">Solution Overview<a hidden class="anchor" aria-hidden="true" href="#solution-overview">#</a></h1>
+<p><img loading="lazy" src="/egressvpc.png" alt="image alt text"  />
+</p>
+<h1 id="deploying-the-above-example">Deploying the above example<a hidden class="anchor" aria-hidden="true" href="#deploying-the-above-example">#</a></h1>
+<p>I have created a terraform code to deploy this setup from scratch in my previous post 
+
+<p>For more information, you can refer to my previous post:</p>
+<a href="/en/blog/terraform-aws/">Building an AWS Centralized NAT Gateway Solution from Scratch with Terraform</a>
+
+</p>
+<p>After you download the code and make changes to it based on your specific needs, start by running the Terraform commands.</p>
+<ol>
+<li><code>terraform validate</code> /To validate the config</li>
+<li><code>terraform plan</code> /To see what resources will be configured</li>
+<li><code>terraform apply</code> /To apply the config into your AWS environment</li>
+</ol>
+<p><img loading="lazy" src="/validate.png" alt="image alt text"  />
+
+<img loading="lazy" src="/apply.png" alt="image alt text"  />
+</p>
+<h1 id="testing-the-deployment">Testing the deployment<a hidden class="anchor" aria-hidden="true" href="#testing-the-deployment">#</a></h1>
+<p>Login to the bastion host in the Hub VPC using SSH. Then connect to the spoke VPC instances.</p>
+<p><code>ssh -i (path to key) ec2-user@(Public IP of the Bastion Host)</code></p>
+<p>Copy the SSH key for this Region to the bastion host</p>
+<pre tabindex="0"><code>vi sshkey.pem
+Press i for putting vi in insert mode.
+Copy the private key you downloaded earlier and paste it into vi.
+Press Esc
+Type :wq to save and exit.
+</code></pre><p>Use ssh to connect to the Spoke 1 Instance from bastion</p>
+<p><code>ssh -i ./sshkey.pem ec2-user@(Private IP of Spoke 1  Instance)</code></p>
+<p>Test the internet connectivity using curl from the spoke 1 instance:</p>
+<p><code>curl http:www.amazon.com</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://akamalsha.github.io/en/tags/networking/">Networking</a></li>
+      <li><a href="https://akamalsha.github.io/en/tags/cloud/">Cloud</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://akamalsha.github.io/en/blog/journey/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Building a Website for Free: My Journey with Hugo and GitHub</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+      
+<script id="partials/analytics.html" 
+  data-goatcounter="https://akamalsha.goatcounter.com/count"
+  async src="//gc.zgo.at/count.js"></script>
+
+
+
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://akamalsha.github.io/en/">Adil Kamalsha&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
